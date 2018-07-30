@@ -6,7 +6,7 @@ class Extra extends React.Component {
     }
 
     render(){
-        return (<div>ExtraComponent</div>)
+        return (<div>Mamamoo</div>)
     }
 
 }

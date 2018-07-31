@@ -11,7 +11,7 @@ class PlayingPage extends React.Component {
         }
         this.backToPlaylist = this.backToPlaylist.bind(this);
         // console.log("constructor: ")
-        // console.log(JSON.stringify(props.location.query))
+        console.log((props.location.query.songData))
     }
 
     componentDidMount(){
@@ -26,9 +26,28 @@ class PlayingPage extends React.Component {
         hashHistory.push('PlayList');
     }
 
+    convertToTime(lastingTime) {
+        let timeValue = '';
+        let intValue;
+        let remainingValue;
+        if (lastingTime < 60) {
+            remainingValue = lastingTime % 60;
+            if (remainingValue < 10) remainingValue = "0" + remaingValue;
+            timeValue = "00:" + remainingValue;
+        }
+        else {
+            intValue = parseInt(lastingTime / 60);
+            if (intValue < 10) intValue = "0" + intValue;
+            remainingValue = lastingTime % 60;
+            if (remainingValue < 10) remainingValue = "0" + remaingValue;
+            timeValue = intValue + ":" + remainingValue;
+        }
+        return timeValue;
+    }
+
     render() {
         // console.log("render");
-
+        let this_ = this;
         return (
             <div className="music-container">
 
@@ -56,6 +75,20 @@ class PlayingPage extends React.Component {
                     <img className="music-function-icon" src = "../public/static/images/comments.png" />
                     <img className="music-function-icon" src = "../public/static/images/more.png" />
                 </div>
+
+                <div className = "audio-progress">
+                    <audio className = "audio-progress-music" src={this.state.songData.url} ref = "audio"></audio>
+                    <div className = "audio-progress-bar-wrapper">
+                        <div className="progress-bar-bg">
+                            <span id="progress-dot"></span>
+                            <div className="progress-bar"></div>
+                        </div>
+                        <div className="audio-time">
+                            <span className="audio-playing-current" id="audioCurTime">00:00</span>
+                            <span className="audio-playing-end">{this_.convertToTime(this_.state.songData.time)}</span></div>
+                    </div>
+                </div>
+
 
                 <div className="music-controller">
                     <img className="music-function-icon" src = "../public/static/images/random-playing.png" />

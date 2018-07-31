@@ -52,7 +52,7 @@ body {
 }
 
 .cover-image-wrapper {
-    height: calc(100% - 96px - 156px - 326px - 60px);
+    height: calc(100% - 96px - 156px - 326px - 100px - 60px);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -79,6 +79,38 @@ body {
     justify-content: space-around;
     align-items: center;
     //border: 1px solid red;
+}
+
+.audio-progress {
+    border: 1px solid red;
+}
+
+.audio-progress-music {
+    width: 100%;
+    height: 100px;
+}
+
+/* 真正的播放进度条 */
+.audio-progress-bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* 播放点 */
+.progress-dot {
+
+}
+
+.audio-time {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+}
+
+.audio-playing-end {
 }
 
 .music-function-icon {

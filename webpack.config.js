@@ -9,6 +9,7 @@ module.exports = {
         filename: "[name].js",
         chunkFilename: "[name].[chunkhash:5].js"
     },
+    devtool: 'eval-source-map',
     devServer: {
         contentBase: "./web",// 本地服务器所加载的页面所在的目录 应该是打包后的文件输出所在地，加载就是打包后的
         historyApiFallback: true,//不跳转
@@ -16,6 +17,18 @@ module.exports = {
     },
     module:{
         loaders:[
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                loader: 'url-loader'
+            },
+            {
+                test: /\.scss$/,
+                loader: "style-loader!css-loader!sass-loader"
+            },
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',

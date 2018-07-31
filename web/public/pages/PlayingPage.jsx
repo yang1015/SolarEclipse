@@ -1,28 +1,52 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 import '../static/style/style.scss';
 
 class PlayingPage extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            songIndex: props.params.songIndex,
+            songData: JSON.parse(props.location.query.songData)
+        }
+        this.backToPlaylist = this.backToPlaylist.bind(this);
+        // console.log("constructor: ")
+        // console.log(JSON.stringify(props.location.query))
+    }
+
+    componentDidMount(){
+        // console.log("did mount")
+    }
+
+    componentDidUpdate(){
+        // console.log("did update")
+    }
+
+    backToPlaylist(){
+        hashHistory.push('PlayList');
     }
 
     render() {
+        // console.log("render");
+
         return (
             <div className="music-container">
 
                 <div className="music-title">
                     <img className="arrow-left-icon icon"
-                         src='../public/static/images/arrow-left.png'/>
+                         src='../public/static/images/arrow-left.png'
+                         onClick = {this.backToPlaylist}
+                    />
                     <div className = "music-info">
-                        <h3>We dont talk anymore</h3>
-                        <p>Charlie puth/Selena Gomez</p>
+                        <h3>{this.state.songData.title}</h3>
+                        <p>{this.state.songData.author}</p>
                     </div>
                 </div>
 
                 <div className="cover-image-wrapper">
                     <div className="cover-image-transparent-border">
                         <img className="cover-image"
-                             src="https://gss0.bdstatic.com/-4o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=e418d56e02f79052fb124f6c6d9abcaf/342ac65c103853433f4e215c9813b07ecb8088ce.jpg"/>
+                             src= {this.state.songData.pic}/>
                     </div>
                 </div>
 

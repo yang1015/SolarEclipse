@@ -13,7 +13,7 @@ export const musicRequest = (url, method, callback) => {
             callback(res.Body.splice(0, 10));
         },
         error: function(err) {
-            console.log(JSON.stringify(err))
+            console.log("err: " + JSON.stringify(err))
         }
     })
 }

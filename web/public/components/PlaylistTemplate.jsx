@@ -7,6 +7,12 @@ class PlaylistTemplate extends React.Component {
         this.state = {
             songList: props.data
         }
+
+        this.listenItemChosen = this.listenItemChosen.bind(this);
+    }
+
+    listenItemChosen(data) {
+        this.props.handleTemplateChosenSongIndex(data);
     }
 
     render() {
@@ -17,7 +23,11 @@ class PlaylistTemplate extends React.Component {
                     {
                         this_.state.songList.map(function (item, index) {
                             return (
-                                <PlaylistItem eachSongItem = {item} key = {index}/>
+                                <PlaylistItem
+                                    onItemChosenListener ={this_.listenItemChosen}
+                                    eachSongItem = {item}
+                                    key = {index}
+                                    songIndex = {index}/>
                             )
                         })
                     }

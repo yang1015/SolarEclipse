@@ -98,8 +98,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 10px;
-    border: 1px solid #666666;
+    padding: 20px 20px;
+    border: 1px solid #e3e3e3;
 }
 
 .playlist-cover-thumbnail {
@@ -111,4 +111,20 @@ body {
     //border: 1px solid red;
     flex: 1;
     margin-left: 45px;
+}
+
+.playlist-total-info {
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.playlist-all-play-img {
+    margin-right: 30px;
+}
+
+.playlist-counts {
+    margin-left: 10px;
+    font-size: smaller;
+    color: #666666;
 }

@@ -11,8 +11,19 @@ body {
 * {
 
 }
+
+
 .music-container {
-    border: 1px solid greenyellow;
+    //border: 1px solid greenyellow;
+    position: relative;
+}
+
+.playing-page-bg {
+    position: absolute;
+    z-index: -2;
+    opacity: 0.4;
+    width: 100%;
+    height: -webkit-fill-available;
 }
 
 .music-title h3 {
@@ -49,8 +60,21 @@ body {
 }
 
 .music-info {
+    text-align: center;
 }
 
+.lyrics-panel {
+    height: calc(100% - 96px - 326px - 100px - 60px);
+}
+
+
+/*
+    title行 96px + 上下padding 60px
+    function 156px
+    进度条 100px
+    播放上一曲下一曲 326px
+
+    */
 .cover-image-wrapper {
     height: calc(100% - 96px - 156px - 326px - 100px - 60px);
     display: flex;
@@ -82,48 +106,94 @@ body {
 }
 
 .audio-progress {
-    border: 1px solid red;
+    //border: 1px solid red;
+    height: 100px;
 }
 
 .audio-progress-music {
     width: 100%;
-    height: 100px;
 }
 
 /* 真正的播放进度条 */
 .audio-progress-bar-wrapper {
+    padding: 0px 30px;
     display: flex;
-    justify-content: space-between;
-    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
 }
 
-/* 播放点 */
-.progress-dot {
+.progress-bar-bg {
+    height: 5px;
+    background: #666;
+    flex: 1;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#progress-dot {
 
 }
 
 .audio-time {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    left: 10px;
-    right: 10px;
+    font-size: smaller;
+    color: #666;
 }
 
-.audio-playing-end {
-}
+
+
+
+
+
 
 .music-function-icon {
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     //border: 1px solid green;
 }
+
+.play-pause-icon {
+    width: 100px;
+    height: 100px;
+}
+
+
+
+
+/* 播放 上一曲下一曲 */
 .music-controller {
     height: 326px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: relative;
+    //border: 1px solid darkblue;
 }
+
+
+.mamamoo-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: -600px;
+    background: #fff;
+}
+
+.empty {
+    display: none; //如果没有这句 那么flex container默认会给这个empty div一个宽度的
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 .playlist-item-wrapper {

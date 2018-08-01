@@ -39,7 +39,7 @@ class PlayList extends React.Component {
         hashHistory.push({
             pathname: '/PlayingPage/' + songIndex,
             query: {
-                songData: JSON.stringify(this_.state.songList[songIndex])
+                songList: JSON.stringify(this_.state.songList)
             }
         });
     }

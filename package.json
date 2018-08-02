@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "pubsub-js": "^1.5.4",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-router": "^2.8.1",

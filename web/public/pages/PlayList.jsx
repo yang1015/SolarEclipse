@@ -1,6 +1,8 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
 import {musicRequest} from '../../util/util.js';
+// import Pubsub from 'pubsub-js';
+
 import '../static/style/style.scss';
 import PlaylistTemplate from '../components/PlaylistTemplate';
 
@@ -11,7 +13,6 @@ class PlayList extends React.Component {
             songList: [],
             songChosenIndex: ''
         }
-        console.log("play list")
         this.getMusicDataBack = this.getMusicDataBack.bind(this);
     }
 
@@ -21,6 +22,11 @@ class PlayList extends React.Component {
         musicRequest(mamamoo, 'POST', this.getMusicDataBack);
     }
 
+    componentWillUnmount() {
+
+    }
+
+
     getMusicDataBack(songList) {
         this.setState({
             songList: songList
@@ -28,10 +34,13 @@ class PlayList extends React.Component {
     }
 
     getTemplateChosenSongIndex(songIndex) {
+        let this_ = this;
         this.setState({
             songChosenIndex: songIndex
         });
+
         this.navigateToPlayingPage(songIndex);
+
     }
 
     navigateToPlayingPage(songIndex) {

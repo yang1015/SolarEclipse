@@ -22,11 +22,6 @@ class PlayList extends React.Component {
         musicRequest(mamamoo, 'POST', this.getMusicDataBack);
     }
 
-    componentWillUnmount() {
-
-    }
-
-
     getMusicDataBack(songList) {
         this.setState({
             songList: songList

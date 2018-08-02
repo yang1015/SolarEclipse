@@ -4,7 +4,7 @@ import PlaylistItem from './PlaylistItem';
 class Progress extends React.Component {
     constructor(props) {
         super(props);
-        console.log("子组件接收props: " + JSON.stringify(props.progress))
+        //console.log("子组件接收props: " + JSON.stringify(props.progress))
         this.state = {
             progress: props.progress
         }
@@ -36,19 +36,19 @@ class Progress extends React.Component {
         this.setState({
             progress: updatedProgress
         });
-        console.log("子组件改变了: " + updatedProgress);
+        //console.log("子组件改变了: " + updatedProgress);
         this.props.onProgressChange(updatedProgress); //传给父组件 然后重新渲染
     }
 
 
     render() {
-        console.log("子组件接收到新的render: " + this.props.progress)
+        //console.log("子组件接收到新的render: " + this.props.progress)
         let this_ = this;
         return (
             <div className="progress-bar-bg" ref="progressBar"
                  onClick={this_.handlePlayingSpotChanged}>
                 <div className="progress-played"
-                     style={{width: `${this_.props.progress}%`}}
+                     style={{width: `${this_.props.progress*100}%`}}
                 />
             </div>
         )

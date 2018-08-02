@@ -30,6 +30,14 @@ class PlayingPage extends React.Component {
 
     componentDidMount() {
         let this_ = this;
+        $("#SolarPlayer").bind($.jPlayer.event.timeupdate, (e) => {
+            duration = e.jPlayer.status.duration;
+            this.setState({
+                progress: e.jPlayer.status.currentPercentAbsolute / 100,
+                volume: e.jPlayer.options.volume * 100,
+                leftTime: this.formatTime(duration * (1 - e.jPlayer.status.currentPercentAbsolute / 100))
+            });
+        });
         $('#SolarPlayer').jPlayer({
             ready: function () {
                 console.log("播放")  //只有第一次点击的时候会触发
@@ -163,7 +171,7 @@ class PlayingPage extends React.Component {
     }
 
     render() {
-        console.log("父组件重新render: " + this.state.progress);
+        //console.log("父组件重新render: " + this.state.progress);
 
         let this_ = this;
         return (

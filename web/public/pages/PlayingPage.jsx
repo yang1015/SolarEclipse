@@ -26,7 +26,6 @@ class PlayingPage extends React.Component {
         this.playNextSong = this.playNextSong.bind(this);
         this.showMamamooInfo = this.showMamamooInfo.bind(this);
         this.changePlayingSpot = this.changePlayingSpot.bind(this);
-
     }
 
     componentDidMount() {

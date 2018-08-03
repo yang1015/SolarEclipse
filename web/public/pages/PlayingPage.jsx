@@ -16,7 +16,8 @@ class PlayingPage extends React.Component {
             showLyrics: false,
             showMamamooInfo: false,
             timePlayed: '',
-            progress: 0
+            progress: 0,
+            currentSongLikedStatus: false
         }
 
         this.backToPlaylist = this.backToPlaylist.bind(this);
@@ -26,6 +27,8 @@ class PlayingPage extends React.Component {
         this.playNextSong = this.playNextSong.bind(this);
         this.showMamamooInfo = this.showMamamooInfo.bind(this);
         this.changePlayingSpot = this.changePlayingSpot.bind(this);
+        this.clickHeart = this.clickHeart.bind(this);
+        this.checkLikedStatus = this.checkLikedStatus.bind(this);
     }
 
     componentDidMount() {
@@ -42,9 +45,16 @@ class PlayingPage extends React.Component {
             ready: function () {
                 console.log("播放")  //只有第一次点击的时候会触发
                 $(this).jPlayer("setMedia", {
-                    mp3: this_.state.currentSongData.url
-                }).jPlayer("play");
+                    mp3: JSON.parse(this_.props.location.query.songList)[this_.props.params.songIndex].url
+                })
+                    // .jPlayer("play");
             }
+        });
+
+        let currentSongLikedStatus = this.checkLikedStatus(this.state.songIndex);
+
+        this.setState({
+            currentSongLikedStatus: currentSongLikedStatus
         });
     }
 
@@ -170,10 +180,76 @@ class PlayingPage extends React.Component {
         })
     }
 
-    render() {
-        //console.log("父组件重新render: " + this.state.progress);
 
+    checkLikedStatus(currentSongIndex) {
+        console.log("check status")
+        if (JSON.parse(sessionStorage.getItem("arrObj"))) {
+            console.log("显示: " + sessionStorage.getItem("arrObj"))
+            let likedSongIdArray = JSON.parse(sessionStorage.getItem("arrObj")).likedSongIdArray;
+            for (let i = 0; i < likedSongIdArray.length; i++) {
+                if (likedSongIdArray[i] == currentSongIndex) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        return false; //返回true
+    }
+
+    clickHeart() {
+        console.log("check")
+        let currentSongIndex = this.state.songIndex;
+        let likedSongIdArray = [];
+        // 有arr 但是没有当前id，需要push
+        // 有Arr 有当前id 需要remove
+        // 没有Arr 需要直接push
+
+        if (JSON.parse(sessionStorage.getItem('arrObj'))) {
+            console.log("arr: " + sessionStorage.getItem('arrObj'))
+
+            likedSongIdArray = JSON.parse(sessionStorage.getItem('arrObj')).likedSongIdArray;
+
+            for (let i = 0; i < likedSongIdArray.length; i++) {
+                if (likedSongIdArray[i] == currentSongIndex) { //说明之前红心了 现在要取消
+                    likedSongIdArray = likedSongIdArray.splice(i, 1);  // remove当前id
+                    let obj = {
+                        likedSongIdArray: likedSongIdArray
+                    }
+                    sessionStorage.setItem('arrObj', JSON.stringify(obj)); // 更新缓存里的数组
+                    this.setState({
+                        currentSongLikedStatus: false
+                    });
+                    return false;
+                }
+            }
+            likedSongIdArray.push(currentSongIndex);
+            let obj = {
+                likedSongIdArray: likedSongIdArray
+            }
+            sessionStorage.setItem('arrObj', JSON.stringify(obj)); // 更新缓存里的数组
+            this.setState({
+                currentSongLikedStatus: true
+            });
+            return true;
+        } else {
+            console.log("没有Arr：" + sessionStorage.getItem('arrObj'));
+            likedSongIdArray.push(currentSongIndex);
+            let obj = {
+                likedSongIdArray: likedSongIdArray
+            }
+            sessionStorage.setItem('arrObj', JSON.stringify(obj)); // 更新缓存里的数组
+            this.setState({
+                currentSongLikedStatus: true
+            });
+            return true;
+        }
+    }
+
+
+    render() {
         let this_ = this;
+        console.log("currentSongLikedStatus: " + this.state.currentSongLikedStatus)
         return (
             <div className="music-container">
                 <img className="playing-page-bg" src={this.state.currentSongData.pic}/>
@@ -198,7 +274,16 @@ class PlayingPage extends React.Component {
                         </div>
                     </div>
                     <div className="function">
-                        <img className="music-function-icon" src="../public/static/images/unliked.png"/>
+                        {
+                            <img className="music-function-icon"
+                                 onClick = {this_.clickHeart}
+                                 src = {this_.state.currentSongLikedStatus?
+                                     "../public/static/images/liked.png" :
+                                     "../public/static/images/unliked.png"
+                                 }
+                            />
+                        }
+
                         <img className="music-function-icon" src="../public/static/images/download.png"/>
                         <img className="music-function-icon" src="../public/static/images/comments.png"/>
                         <img className="music-function-icon" src="../public/static/images/more.png"/>

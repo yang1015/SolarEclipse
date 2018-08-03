@@ -52,6 +52,7 @@ class PlayList extends React.Component {
         let this_ = this;
         return (
             <div>
+                <img className = "playlist-banner" src = "http://wx2.sinaimg.cn/large/006sDV79gy1ftgqj0vls5j31jk11n7wh.jpg" />
                 <div className="playlist-total-info">
                     <img className="icon playlist-all-play-img" src="../public/static/images/playlist-play.png"/>
                     播放全部 <span className="playlist-counts"> (共{this.state.songList.length}首)</span>

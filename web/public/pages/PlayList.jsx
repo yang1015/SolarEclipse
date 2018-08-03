@@ -14,6 +14,7 @@ class PlayList extends React.Component {
             songChosenIndex: ''
         }
         this.getMusicDataBack = this.getMusicDataBack.bind(this);
+        this.playItAll = this.playItAll.bind(this);
     }
 
     componentDidMount() {
@@ -26,6 +27,10 @@ class PlayList extends React.Component {
         this.setState({
             songList: songList
         })
+    }
+
+    playItAll(){
+        this.navigateToPlayingPage(0); //播放全部其实就是从第一首开始播
     }
 
     getTemplateChosenSongIndex(songIndex) {
@@ -47,15 +52,25 @@ class PlayList extends React.Component {
             }
         });
     }
+    navigateToAudioPage() {
+        hashHistory.push('/VideoPage');
+    }
+
 
     render() {
         let this_ = this;
         return (
             <div>
-                <img className = "playlist-banner" src = "http://wx2.sinaimg.cn/large/006sDV79gy1ftgqj0vls5j31jk11n7wh.jpg" />
+                <img className = "playlist-banner"
+                     onClick = {this.navigateToAudioPage}
+                     src = "http://wx2.sinaimg.cn/large/006sDV79gy1ftgqj0vls5j31jk11n7wh.jpg" />
                 <div className="playlist-total-info">
-                    <img className="icon playlist-all-play-img" src="../public/static/images/playlist-play.png"/>
-                    播放全部 <span className="playlist-counts"> (共{this.state.songList.length}首)</span>
+                    <img className="icon playlist-all-play-img"
+                         src="../public/static/images/play-all.png"
+                         style = {{width: "60px", height: "60px"}}
+                    />
+                    <h3 className = "play-all" onClick = {this.playItAll}>播放全部</h3>
+                    <span className="playlist-counts"> (共{this.state.songList.length}首)</span>
                 </div>
                 {
                     this_.state.songList.length == 0 ? <div>暂无音乐</div>

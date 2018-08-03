@@ -10,12 +10,17 @@ export const musicRequest = (url, method, callback) => {
             }
         },
         success: function(res) {
-            callback(res.Body.splice(0, 10));
+            callback(res.Body.splice(0, 20));
         },
         error: function(err) {
             console.log("err: " + JSON.stringify(err))
         }
     })
+}
+
+export const getRandomSongIndex = (songListLength) => {
+
+    return parseInt(Math.random() * songListLength);
 }
 
 

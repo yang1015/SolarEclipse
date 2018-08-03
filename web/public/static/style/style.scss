@@ -9,6 +9,10 @@ body {
   font-size: 37.5px;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
 * {
 
 }
@@ -179,11 +183,12 @@ body {
 
 
 
-
+/* playlist page */
 .playlist-banner {
   width: 100%;
   height: 610px;
 }
+
 
 .playlist-item-wrapper {
   display: flex;
@@ -208,6 +213,11 @@ body {
   padding: 20px 30px;
   display: flex;
   align-items: center;
+  justify-content: baseline;
+}
+
+.play-all {
+  margin: 0;
 }
 
 .playlist-all-play-img {
@@ -218,4 +228,40 @@ body {
   margin-left: 10px;
   font-size: smaller;
   color: #666666;
+}
+
+
+.video-page-container {
+  font-size: 26px;
+  background: #666;
+  color: #fff;
+  height: -webkit-fill-available;
+  margin: 0 auto;
+}
+
+.video-page-wrapper {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+.video {
+  width: 96%;
+}
+
+.video-info {
+  width: 96%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.video-title {
+  margin-bottom: 60px;
+  font-size: larger;
+}
+.album-info {
+  //font-size: small;
 }

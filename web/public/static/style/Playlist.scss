@@ -1,0 +1,88 @@
+@function px2rem($px) {
+  $rem: 37.5px;
+  @return ($px / $rem) + rem;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* playlist page */
+.playlist-page-wrapper {
+  font-size: px2rem(16px);
+}
+
+.banner-wrapper {
+  .playlist-banner {
+    width: px2rem(375px);
+    height: px2rem(225px);
+  }
+}
+
+
+.playlist-total-info {
+  height: px2rem(53px);
+  padding-left: px2rem(10px);
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+
+  .playlist-all-play-img {
+    margin-right: px2rem(15px);
+    width: px2rem(25px);
+    height: px2rem(25px);
+  }
+
+  .play-all {
+    margin: 0;
+    font-size: px2rem(16px);
+  }
+
+  .playlist-counts {
+    margin-left: px2rem(5px);
+    font-size: px2rem(14px);
+    color: #666666;
+  }
+
+}
+
+
+.playlist-item-wrapper {
+  //border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: px2rem(10px);
+  font-size: px2rem(16px);
+  // border: 1px solid #e3e3e3;
+
+  /* 唱片小图 */
+  .playlist-cover-thumbnail {
+    width: px2rem(60px);
+    height: px2rem(60px);
+  }
+
+  /* 歌曲名 歌手名*/
+  .playlist-music-info {
+    //border: 1px solid red;
+    flex: 1;
+    margin-left: px2rem(20px);
+  }
+
+  /* 三个小点点*/
+  .playlist-more {
+    width: px2rem(15px);
+    height: px2rem(3px);
+  }
+
+}
+
+
+
+
+
+
+
+
+

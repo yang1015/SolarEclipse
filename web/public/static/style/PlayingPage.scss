@@ -1,0 +1,192 @@
+@function px2rem($px) {
+  $rem: 37.5px;
+  @return ($px / $rem) + rem;
+}
+
+.music-container {
+  position: relative;
+  font-size: px2rem(16px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //border: 1px dotted black;
+  height: -webkit-fill-available;
+}
+
+.music-title {
+  //border: 1px solid coral;
+  height: px2rem(60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: px2rem(14px);
+  border-bottom: 1px solid #e2e3e4;
+
+  .music-info {
+    height: inherit;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .music-info p {
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+.playing-page-bg {
+  position: absolute;
+  z-index: -2;
+  opacity: 0.4;
+  width: 100%;
+  height: -webkit-fill-available;
+}
+
+
+// main panel = cover wrapper + function
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+/*
+  title行 60px
+  main panel 上下padding 60px
+  function 80px
+  进度条 70px
+  播放上一曲下一曲 80px
+
+  */
+
+.cover-image-wrapper {
+  //border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: px2rem(40px);
+
+  .cover-image-transparent-border {
+    padding: px2rem(10px);
+    background: #666;
+    border-radius: 50%;
+    .cover-image {
+      width: px2rem(190px);
+      height: px2rem(190px);
+      border-radius: 50%;
+      border: px2rem(40px) solid black;
+    }
+  }
+}
+
+.function {
+  height: px2rem(80px);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  //border: 1px solid red;
+}
+
+.audio-progress {
+  //border: 1px solid orange;
+  padding-left: px2rem(15px);
+  padding-right: px2rem(15px);
+  height: px2rem(70px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  #SolarPlayer {
+    display: none;
+  }
+  /* 真正的播放进度条 */
+
+  .progress-bar-bg {
+    height: px2rem(2px);
+    background: #666;
+    cursor: pointer;
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    opacity: 0.5;
+  }
+
+  .progress-played {
+    height: px2rem(2px);
+    background: lawngreen;
+  }
+
+  .audio-time {
+    font-size: smaller;
+    color: #666;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: px2rem(10px);
+  }
+
+}
+
+/* 播放 上一曲下一曲 */
+.music-controller {
+  height: px2rem(88px);
+  padding: px2rem(10px) 0;
+  //border: 1px solid lime;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+
+  .mamamoo-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: px2rem(-250px);
+    background: #fff;
+  }
+
+  .empty {
+    display: none; //如果没有这句 那么flex container默认会给这个empty div一个宽度的
+  }
+}
+
+.icon {
+  width: px2rem(20px);
+  height: px2rem(20px);
+}
+
+.function-icon {
+  width: px2rem(22px);
+  height: px2rem(22px);
+}
+
+.arrow-left-icon {
+  position: absolute;
+  left: px2rem(15px);
+}
+
+.music-function-icon {
+  width: px2rem(26px);
+  height: px2rem(26px);
+}
+
+.play-pause-icon {
+  width: px2rem(40px);
+  height: px2rem(40px);
+  cursor: pointer;
+
+}
+
+//.lyrics-panel {
+//  height: calc(100% - 96px - 326px - 100px - 60px);
+//}
+
+
+
+
+

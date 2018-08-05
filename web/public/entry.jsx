@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory} from 'react-router';
 import PlayList from './pages/PlayList.jsx';
 
+// import './static/style/style.scss';
+
+
 
 const PlayingPage = (location, cb) => {
     require.ensure([], require => {
@@ -23,6 +26,6 @@ ReactDOM.render(
         <Route path="/" component={PlayList}/>
         <Route path="/PlayList" component={PlayList}/>
         <Route path = "/PlayingPage/:songIndex" getComponent={PlayingPage} />
-        <Route path = '/VideoPage' getComponent={VideoPage} />
+        {/*<Route path = '/VideoPage' getComponent={VideoPage} />*/}
     </Router>
     , document.getElementById('root'));

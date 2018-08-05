@@ -1,8 +1,10 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
-import '../static/style/style.scss';
+
 import Progress from '../components/Progress.jsx';
 import {getRandomSongIndex} from '../../util/util';
+
+import '../static/style/PlayingPage.scss';
 
 let duration = null; //音频文件的总时长
 let playingModeArr = [0, 1, 2]; // 0是顺序播放，1是单曲循环，2是随机播放
@@ -335,12 +337,13 @@ class PlayingPage extends React.Component {
                          onClick={this.backToPlaylist}
                     />
                     <div className="music-info">
-                        <h3>{this.state.currentSongData.title}</h3>
+                        <p>{this.state.currentSongData.title}</p>
                         <p>{this.state.currentSongData.author}</p>
                     </div>
                 </div>
 
                 <div className="main-panel">
+
                     <div className="cover-image-wrapper">
                         <div className="cover-image-transparent-border">
                             <img className="cover-image"
@@ -348,6 +351,7 @@ class PlayingPage extends React.Component {
                                  onClick={this.showLyrics}/>
                         </div>
                     </div>
+
                     <div className="function">
                         {
                             <img className="music-function-icon"
@@ -359,9 +363,9 @@ class PlayingPage extends React.Component {
                             />
                         }
 
-                        <img className="music-function-icon" src="../public/static/images/download.png"/>
-                        <img className="music-function-icon" src="../public/static/images/comments.png"/>
-                        <img className="music-function-icon" src="../public/static/images/more.png"/>
+                        <img className="function-icon" src="../public/static/images/download.png"/>
+                        <img className="function-icon" src="../public/static/images/comments.png"/>
+                        <img className="function-icon" src="../public/static/images/more.png"/>
                     </div>
                 </div>
 

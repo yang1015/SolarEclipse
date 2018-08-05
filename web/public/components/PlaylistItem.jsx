@@ -1,4 +1,5 @@
 import React from 'react';
+import '../static/style/Playlist.scss';
 
 class PlaylistItem extends React.Component{
 
@@ -20,13 +21,12 @@ class PlaylistItem extends React.Component{
     render(){
         return (
             <div className = "playlist-item-wrapper" onClick ={this.clickSingleSong}>
-                {/*<p>{this.state.songIndex}</p>*/}
                 <img className="playlist-cover-thumbnail" src={this.state.eachSongItem.pic}/>
                 <div className = "playlist-music-info">
                     <div>{this.state.eachSongItem.title}</div>
                     <div>{this.state.eachSongItem.author}</div>
                 </div>
-                <img src = "../public/static/images/playlist-info.png" />
+                <img className = "playlist-more" src = "../public/static/images/playlist-info.png" />
             </div>
         )
     }

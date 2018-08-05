@@ -1,9 +1,8 @@
 import React from 'react';
 import {hashHistory} from 'react-router';
 import {musicRequest} from '../../util/util.js';
-// import Pubsub from 'pubsub-js';
+import '../static/style/Playlist.scss';
 
-import '../static/style/style.scss';
 import PlaylistTemplate from '../components/PlaylistTemplate';
 
 class PlayList extends React.Component {
@@ -60,18 +59,23 @@ class PlayList extends React.Component {
     render() {
         let this_ = this;
         return (
-            <div>
-                <img className = "playlist-banner"
-                     onClick = {this.navigateToAudioPage}
-                     src = "http://wx2.sinaimg.cn/large/006sDV79gy1ftgqj0vls5j31jk11n7wh.jpg" />
+            <div className = "playlist-page-wrapper">
+                <div className = "banner-wrapper">
+                    <img className = "playlist-banner"
+                         onClick = {this.navigateToAudioPage}
+                         //src = "http://wx2.sinaimg.cn/large/006sDV79gy1ftgqj0vls5j31jk11n7wh.jpg"
+                        src = "../public/static/images/banner.png"
+                    />
+                </div>
+
                 <div className="playlist-total-info">
                     <img className="icon playlist-all-play-img"
                          src="../public/static/images/play-all.png"
-                         style = {{width: "60px", height: "60px"}}
                     />
-                    <h3 className = "play-all" onClick = {this.playItAll}>播放全部</h3>
+                    <p className = "play-all" onClick = {this.playItAll}>播放全部</p>
                     <span className="playlist-counts"> (共{this.state.songList.length}首)</span>
                 </div>
+
                 {
                     this_.state.songList.length == 0 ? <div>暂无音乐</div>
                         :

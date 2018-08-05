@@ -1,5 +1,6 @@
 import React from 'react';
 import PlaylistItem from './PlaylistItem';
+import '../static/style/Playlist.scss';
 
 class PlaylistTemplate extends React.Component {
     constructor(props) {
